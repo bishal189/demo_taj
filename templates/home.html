@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div>
+  
+  <section class='first'>
+  <h2>Upload a file</h2>
+  <form method="POST" enctype="multipart/form-data" class='form' action='{% url 'home' %}'>
+    {% csrf_token %}
+    {{ forms }}
+    <button type="submit" class="btn btn-danger">Upload </button>
+  </form>
+</section>
+  
+<section class='last'>
+  <h2>Search here</h2>
+  <form method="POST" enctype="multipart/form-data" class='form' action='{% url 'search' %}'>
+    {% csrf_token %}
+    <input type="text" name='code'>
+    <button type="submit" class="btn btn-danger">Search </button>
+  </form>
+</section>
+
+</div>
+
+{% endblock %}
